@@ -24,7 +24,7 @@ const post1 = {
 const Home = () => {
   return (
     <View>
-      <Post post={post2} />
+      <Post post={post1} />
     </View>
   );
 };
