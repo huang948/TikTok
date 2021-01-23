@@ -1,30 +1,20 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, FlatList, Dimensions} from 'react-native';
 import Post from '../../components/Post';
 
-const post1 = {
-  id: 'p1',
-  videoUri:
-    'https://d8vywknz0hvjw.cloudfront.net/fitenium-media-prod/videos/45fee890-a74f-11ea-8725-311975ea9616/proccessed_720.mp4',
-  user: {
-    id: 'u1',
-    username: 'daviddobrik from props',
-    imageUri:
-      'https://pbs.twimg.com/profile_images/1223706175910211584/tmu8d9fA_400x400.jpg',
-  },
-  description: 'hahahah oh boy @borat',
-  songName: 'NF - The search',
-  songImage:
-    'https://pbs.twimg.com/profile_images/1223706175910211584/tmu8d9fA_400x400.jpg',
-  likes: 123,
-  comments: 12,
-  shares: 44,
-};
+import posts from '../../../data/posts';
 
 const Home = () => {
   return (
     <View>
-      <Post post={post1} />
+      <FlatList
+        data={posts}
+        renderItem={({item}) => <Post post={item} />}
+        showsVerticalScrollIndicator={false}
+        snapToInterval={Dimensions.get('window').height - 130}
+        snapToAlignment={'start'}
+        decelerationRate={'fast'}
+      />
     </View>
   );
 };
